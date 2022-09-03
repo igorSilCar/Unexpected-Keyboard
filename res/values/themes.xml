@@ -69,4 +69,17 @@
     <item name="emoji_button_bg">#000000</item>
     <item name="emoji_color">#ffffff</item>
   </style>
+  <style name="Emis" parent="BaseTheme">
+    <item name="android:isLightTheme">false</item>
+    <item name="colorKeyboard">#ffb30f12</item>
+    <item name="colorKey">#ff1c1109</item>
+    <item name="colorKeyActivated">#ff1c2a1d</item>
+    <item name="colorLabel">#ffd5d5d5</item>
+    <item name="colorLabelActivated">#ffb376c0</item>
+    <item name="colorLabelLocked">#ff229933</item>
+    <item name="colorSubLabel">#ffa0a0a0</item>
+    <item name="keyBorderRadius">5.0dip</item>
+    <item name="emoji_button_bg">#ff202020</item>
+    <item name="emoji_color">#ffffffff</item>
+  </style>
 </resources>
