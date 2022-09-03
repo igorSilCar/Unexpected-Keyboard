@@ -224,6 +224,7 @@ final class Config
       case "light": return R.style.Light;
       case "black": return R.style.Black;
       case "dark": return R.style.Dark;
+      case "emis": return R.style.Emis;
       default:
       case "system":
         if (Build.VERSION.SDK_INT >= 8)
@@ -267,6 +268,7 @@ final class Config
     {
       case "light": return R.style.Light;
       case "black": return R.style.Black;
+      case "emis": return R.style.Emis;
       default: case "dark": return R.style.Dark;
     }
   }

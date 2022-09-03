@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.inputmethodservice.InputMethodService;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -71,7 +72,9 @@ public class Keyboard2 extends InputMethodService
     String pkg = getPackageName();
     for (InputMethodInfo imi : imm.getEnabledInputMethodList())
       if (imi.getPackageName().equals(pkg))
-        return imm.getEnabledInputMethodSubtypeList(imi, true);
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+          return imm.getEnabledInputMethodSubtypeList(imi, true);
+        }
     return Arrays.asList();
   }
 
@@ -80,7 +83,10 @@ public class Keyboard2 extends InputMethodService
     int l = _config.layout;
     if (l == -1)
     {
-      String s = subtype.getExtraValueOf("default_layout");
+      String s = null;
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB_MR1) {
+        s = subtype.getExtraValueOf("default_layout");
+      }
       if (s != null)
         l = Config.layoutId_of_string(s);
       else
@@ -91,7 +97,10 @@ public class Keyboard2 extends InputMethodService
 
   private void extra_keys_of_subtype(Set<KeyValue> dst, InputMethodSubtype subtype)
   {
-    String extra_keys = subtype.getExtraValueOf("extra_keys");
+    String extra_keys = null;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB_MR1) {
+      extra_keys = subtype.getExtraValueOf("extra_keys");
+    }
     if (extra_keys == null)
       return;
     String[] ks = extra_keys.split("\\|");
@@ -137,7 +146,9 @@ public class Keyboard2 extends InputMethodService
   private void refreshSubtypeImm()
   {
     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-    _config.shouldOfferSwitchingToNextInputMethod = imm.shouldOfferSwitchingToNextInputMethod(getConnectionToken());
+    if (VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+      _config.shouldOfferSwitchingToNextInputMethod = imm.shouldOfferSwitchingToNextInputMethod(getConnectionToken());
+    }
     if (VERSION.SDK_INT < 12)
     {
       // Subtypes won't work well under API level 12 (getExtraValueOf)
