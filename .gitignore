@@ -2,3 +2,6 @@
 *.keystore.asc
 _build
 /*-keystore.conf
+.idea/
+Unexpected-Keyboard.iml
+out/
