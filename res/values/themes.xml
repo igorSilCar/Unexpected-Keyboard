@@ -56,6 +56,18 @@
     <item name="emoji_button_bg">#dedede</item>
     <item name="emoji_color">#000000</item>
   </style>
+  <style name="Alb">
+    <item name="colorKeyboard">#ffd5d5d5</item>
+    <item name="colorKey">#ffffffff</item>
+    <item name="colorKeyActivated">#ffe3e3e3</item>
+    <item name="colorLabel">#ff000000</item>
+    <item name="colorLabelActivated">#ff151515</item>
+    <item name="colorLabelLocked">#ff64dd76</item>
+    <item name="colorSubLabel">#ff5e5e5e</item>
+    <item name="keyBorderRadius">5.0dip</item>
+    <item name="emoji_button_bg">#ffdedede</item>
+    <item name="emoji_color">#ff000000</item>
+  </style>
   <style name="Black" parent="BaseTheme">
     <item name="android:isLightTheme">false</item>
     <item name="colorKeyboard">#000000</item>
