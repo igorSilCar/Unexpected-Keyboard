@@ -222,6 +222,7 @@ final class Config
     switch (theme_name)
     {
       case "light": return R.style.Light;
+      case "alb": return R.style.Alb;
       case "black": return R.style.Black;
       case "dark": return R.style.Dark;
       default:
@@ -266,6 +267,7 @@ final class Config
     switch (name)
     {
       case "light": return R.style.Light;
+      case "alb": return R.style.Alb;
       case "black": return R.style.Black;
       default: case "dark": return R.style.Dark;
     }
