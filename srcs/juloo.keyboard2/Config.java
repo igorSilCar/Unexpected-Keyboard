@@ -47,7 +47,8 @@ final class Config
   public String actionLabel; // Might be 'null'
   public int actionId; // Meaningful only when 'actionLabel' isn't 'null'
   public boolean swapEnterActionKey; // Swap the "enter" and "action" keys
-  public Set<KeyValue> extra_keys; // 'null' means all the keys
+  public Set<KeyValue> extra_keys_subtype;
+  public Set<KeyValue> extra_keys_param;
 
   public final IKeyEventHandler handler;
 
@@ -81,7 +82,7 @@ final class Config
     actionLabel = null;
     actionId = 0;
     swapEnterActionKey = false;
-    extra_keys = null;
+    extra_keys_subtype = null;
     handler = h;
   }
 
@@ -149,6 +150,7 @@ final class Config
     accents = Integer.valueOf(prefs.getString("accents", "1"));
     theme = getThemeId(res, prefs.getString("theme", ""));
     autocapitalisation = prefs.getBoolean("autocapitalisation", true);
+    extra_keys_param = ExtraKeyCheckBoxPreference.get_extra_keys(prefs);
   }
 
   /** Update the layout according to the configuration.
@@ -164,7 +166,9 @@ final class Config
       KeyValue.getKeyByName("action").withSymbol(actionLabel);
     // Extra keys are removed from the set as they are encountered during the
     // first iteration then automatically added.
-    final Set<KeyValue> extra_keys = new HashSet<KeyValue>(this.extra_keys);
+    final Set<KeyValue> extra_keys = new HashSet<KeyValue>();
+    extra_keys.addAll(extra_keys_subtype);
+    extra_keys.addAll(extra_keys_param);
     KeyboardData kw = original_kw.mapKeys(new KeyboardData.MapKeyValues() {
       public KeyValue apply(KeyValue key, boolean localized)
       {
@@ -224,6 +228,7 @@ final class Config
       case "light": return R.style.Light;
       case "black": return R.style.Black;
       case "dark": return R.style.Dark;
+      case "white": return R.style.White;
       default:
       case "system":
         if (Build.VERSION.SDK_INT >= 8)
@@ -241,6 +246,7 @@ final class Config
     switch (name)
     {
       case "azerty": return R.xml.azerty;
+      case "bangla": return R.xml.bangla;
       case "bgph1": return R.xml.local_bgph1;
       case "colemak": return R.xml.colemak;
       case "dvorak": return R.xml.dvorak;
@@ -252,22 +258,13 @@ final class Config
       case "qwerty_pt": return R.xml.qwerty_pt;
       case "qwerty_tr": return R.xml.qwerty_tr;
       case "qwerty": return R.xml.qwerty;
+      case "qwerty_no": return R.xml.qwerty_no;
       case "qwerty_sv_se": return R.xml.qwerty_sv_se;
       case "qwertz_hu": return R.xml.qwertz_hu;
       case "qwertz": return R.xml.qwertz;
       case "ru_jcuken": return R.xml.local_ru_jcuken;
       case "jcuken_ua": return R.xml.jcuken_ua;
       default: return R.xml.qwerty; // The config might store an invalid layout, don't crash
-    }
-  }
-
-  public static int themeId_of_string(String name)
-  {
-    switch (name)
-    {
-      case "light": return R.style.Light;
-      case "black": return R.style.Black;
-      default: case "dark": return R.style.Dark;
     }
   }
 

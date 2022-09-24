@@ -8,6 +8,7 @@
     <item>qwerty_es</item>
     <item>qwerty_ko</item>
     <item>qwerty_lv</item>
+    <item>qwerty_no</item>
     <item>qwerty_sv_se</item>
     <item>qwerty_hu</item>
     <item>qwerty_tr</item>
@@ -19,6 +20,7 @@
     <item>colemak</item>
     <item>neo2</item>
     <item>jcuken_ua</item>
+    <item>bangla</item>
   </string-array>
   <string-array name="pref_layout_entries">
     <item>@string/pref_layout_e_system</item>
@@ -28,6 +30,7 @@
     <item>QWERTY (Español)</item>
     <item>QWERTY (Korean)</item>
     <item>QWERTY (Latvian)</item>
+    <item>QWERTY (Norwegian)</item>
     <item>QWERTY (Swedish)</item>
     <item>QWERTY (Hungarian)</item>
     <item>QWERTY (Türkçe)</item>
@@ -39,6 +42,7 @@
     <item>Colemak</item>
     <item>Neo 2</item>
     <item>ЙЦУКЕН (Українська)</item>
+    <item>বাংলা</item>
   </string-array>
   <string-array name="pref_programming_layout_values">
     <item>none</item>
@@ -67,12 +71,14 @@
     <item>@string/pref_theme_e_dark</item>
     <item>@string/pref_theme_e_light</item>
     <item>@string/pref_theme_e_black</item>
+    <item>@string/pref_theme_e_white</item>
   </string-array>
   <string-array name="pref_theme_values">
     <item>system</item>
     <item>dark</item>
     <item>light</item>
     <item>black</item>
+    <item>white</item>
   </string-array>
   <string-array name="pref_swipe_dist_entries">
     <item>@string/pref_swipe_dist_e_very_short</item>
